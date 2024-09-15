@@ -10,7 +10,7 @@
                   <p class="card-description">
                     Tambah Berita
                   </p>
-                  <form class="forms-sample" method="post" action="/admin/admin/simpan">
+                  <form class="forms-sample" method="post" enctype="multipart/form-data" action="/admin/berita/simpan">
                     @csrf
                     <div class="form-group">
                       <label>Judul</label>
@@ -18,7 +18,7 @@
                     </div>
                     <div class="form-group">
                       <label>Konten</label>
-                      <input type="email" name="konten" class="form-control" placeholder="Nama">
+                      <textarea name="konten" id="content"></textarea>
                     </div>
                     <div class="form-group">
                       <label>Gambar</label>
@@ -27,8 +27,9 @@
                     <div class="form-group">
                       <label>Kategori</label>
                       <select name="kategori" class="form-control">
-                        <option value="superadmin">Super Admin</option>
-                        <option value="editor">Editor</option>
+                        @foreach($kategori_list as $kategori)
+                        <option value="{{$kategori->id}}">{{$kategori->nama_kategori}}</option>
+                        @endforeach
                       </select>
                     </div>
                    
@@ -39,4 +40,17 @@
             </div>
           </div>
         </div>
+
+
+        <script src="https://cdn.ckeditor.com/ckeditor5/23.0.0/classic/ckeditor.js"></script>
+<script>
+ClassicEditor.create( document.querySelector( '#content' ) )
+                .catch( error => {
+                    console.error( error );
+                } );
+
+                
+</script>
 @endsection
+
+

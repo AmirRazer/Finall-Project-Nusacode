@@ -23,4 +23,9 @@ class AdminLoginController extends Controller
             return back()->with('error','Login Gagal');
         }
     }
+    public function logout()
+    {
+        Auth::logout();
+        return redirect('/login');
+    }
 }
