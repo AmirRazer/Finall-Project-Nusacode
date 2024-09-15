@@ -8,8 +8,12 @@ use App\Http\Controllers\AdminLoginController;
 use App\Http\Controllers\AdminBeritaController;
 use App\Http\Controllers\AdminKategoriController;
 
-Route::get('/',[HomePageController::class,'index']);
-
+// Modul Frontend
+Route::get('/',[HomePageController::class, 'index']);
+Route::get('/detail/{slug_berita}',[HomePageController::class, 'detail_berita']);
+Route::get('/kategori/{slug_kategori}',[HomePageController::class, 'kategori']);
+Route::get('/indeks-berita',[HomePageController::class, 'indeks_berita']);
+Route::post('/search/{search_type}',[HomePageController::class, 'search']);
 
 
 
